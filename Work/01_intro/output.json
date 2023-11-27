@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "name": "AA",
+      "shares": 100,
+      "price": 32.2
+    },
+    {
+      "name": "IBM",
+      "shares": 50,
+      "price": 91.1
+    }
+  ]
+}
