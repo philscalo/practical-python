@@ -13,8 +13,7 @@ def read_portfolio(filename: str) -> list[dict[str, int, float]]:
 
     with open(filename, "rt") as f:
         rows = csv.reader(f)
-        headers = ['name', 'shares', 'price']
-        next(rows)
+        headers = next(rows)
         for rowno, row in enumerate(rows, start=1):
             record = dict(zip(headers, row))
             try:
@@ -37,11 +36,11 @@ def read_prices(filename: str) -> dict:
     price_dict = {}
     with open(filename, "rt") as f:
         rows = csv.reader(f)
-        for row in rows:
+        for rowno, row in enumerate(rows):
             try:
                 price_dict.update({row[0]: float(row[1])})
             except IndexError as e:
-                print(f"Empty line in file input: {e}")
+                print(f"File {filename}, ln {rowno}: Empty line in file input: {e}")
     return price_dict
 
 
@@ -107,4 +106,3 @@ def display_report(data: list):
 if __name__ == "__main__":
     portfolio = read_portfolio("Data/portfolio.csv")
     prices = read_prices("Data/prices.csv")
-    print(make_report(portfolio, prices))
