@@ -92,7 +92,7 @@ def make_report(portfolio: list, prices: dict[str, float]) -> list[tuple]:
     return table_rows
 
 
-def display_report(data: list):
+def print_report(data: list):
     headers = ('Name', 'Shares', 'Price', 'Change')
     name, shares, price, change = headers
     sep = '-'*10
@@ -103,6 +103,12 @@ def display_report(data: list):
         print('%10s %10d %10.2f %10.2f' % row)
 
 
+def portfolio_report(portfolio, prices):
+    data = make_report(portfolio, prices)
+    print_report(data)
+
+
 if __name__ == "__main__":
     portfolio = read_portfolio("Data/portfolio.csv")
     prices = read_prices("Data/prices.csv")
+    portfolio_report(portfolio, prices)
