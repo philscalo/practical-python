@@ -8,7 +8,7 @@ def portfolio_cost(filename: str) -> float:
     portfolio = report.read_portfolio(filename)
     total_cost = 0.0
     for stock in portfolio:
-        total_cost += stock["shares"] * stock["price"]
+        total_cost += stock.shares * stock.price
 
     return total_cost
 
